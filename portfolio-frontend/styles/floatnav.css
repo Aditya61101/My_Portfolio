@@ -1,0 +1,29 @@
+.bottom-nav{
+    background: rgba(0,0,0,0.3);
+    background: whitesmoke;
+    width: max-content;
+    display: block;
+    padding: 0.7rem 1.7rem;
+    z-index: 2;
+    position: fixed;
+    left:50%;
+    transform: translateX(-50%);
+    bottom: 3rem;
+    display: flex;
+    gap: 0.8rem;
+    border-radius: 3rem;
+    backdrop-filter: blur(15px);
+}
+.bottom-nav .float-links{
+    background: transparent;
+    padding: 0.9rem;
+    border-radius: 50%;
+    color:var(--color-light);
+    font-size: 1.1rem;
+}
+.bottom-nav .float-links:hover{
+    background: ghostwhite;
+}
+.bottom-nav .float-links.active{
+    background: rgb(222, 217, 217);
+}
