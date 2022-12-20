@@ -21,10 +21,10 @@ const Hero = () => {
         <div className="relative bg-gradient-to-b from-teal-500 rounded-full w-56 h-56 mx-auto overflow-hidden object-fill">
           <Image src={me} layout="fill" objectFit="cover" />
         </div>
-        <h2 className="text-5xl py-2 bg-clip-text bg-gradient-to-r from-cyan-500 to-teal-500 font-medium text-transparent">
+        <h2 className="lg:text-5xl text-4xl py-2 bg-clip-text bg-gradient-to-r from-cyan-500 to-teal-500 font-medium text-transparent">
           Aditya Kumar
         </h2>
-        <h3 className="text-2xl py-3 text-gray-700">
+        <h3 className="lg:text-2xl text-xl py-3 text-gray-700">
           I am {text} <Cursor cursorColor="cyan" />
         </h3>
       </div>
