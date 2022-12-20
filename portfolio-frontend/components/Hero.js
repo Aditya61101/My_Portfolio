@@ -24,7 +24,7 @@ const Hero = () => {
         <h2 className="text-5xl py-2 bg-clip-text bg-gradient-to-r from-cyan-500 to-teal-500 font-medium text-transparent">
           Aditya Kumar
         </h2>
-        <h3 className="text-2xl py-3">
+        <h3 className="text-2xl py-3 text-gray-700">
           I am {text} <Cursor cursorColor="cyan" />
         </h3>
       </div>

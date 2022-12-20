@@ -6,3 +6,8 @@
   font-family: "burtons";
   src:("../public/Burtons.otf")
 }
+@layer components{
+  .contactIp{
+    @apply outline-none shadow-lg border-b rounded-md px-6 py-3 border-[#242424] text-gray-800 placeholder-gray-500 transition-all focus:border-gray-800 focus:text-gray-700 hover:border-gray-800
+  }
+}

@@ -2,11 +2,11 @@ import React, {useEffect, useState} from "react";
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import { AiFillGithub, AiFillLinkedin, AiFillInstagram } from "react-icons/ai";
 
-const Navbar = () => {
+const Navbar = ({setDark, dark}) => {
   
   return (
     <nav className="py-3 mb-5 flex justify-between">
-      <div className="text-4xl flex justify-center gap-2 text-gray-600">
+      <div className=" text-2xl lg:text-4xl md:3xl flex justify-center gap-2 text-gray-700">
         <a href="https://github.com/Aditya61101" target="_blank">
           <AiFillGithub />
         </a>
@@ -21,12 +21,12 @@ const Navbar = () => {
           <AiFillInstagram />
         </a>
       </div>
-      <ul className="flex items-center">
+      <ul className="text-xs lg:text-base md:text-base flex items-center">
         <li>
-          <a href="">
+          {/* <a href=""> */}
             {" "}
-            <BsFillMoonStarsFill className="text-2xl" />
-          </a>
+            <BsFillMoonStarsFill className="cursor-pointer text-2xl" onClick={() => {setDark(!dark)}}/>
+          {/* </a> */}
         </li>
         <li>
           <a
