@@ -91,7 +91,7 @@ export const Skills = () => {
       <h3 className="text-xs uppercase tracking-[3px] md:text-sm mt-5 text-gray-600">
         Hover over a skill for current proficiency
       </h3>
-      <div className="mt-5 grid grid-cols-4 gap-5 md:gap-y-0">
+      <div className="mt-5 grid grid-cols-4 lg:grid-cols-6 gap-5 md:gap-y-0">
         {skills.map((item) => {
           return <Skill img={item.img} percent={item.percent} />;
         })}
