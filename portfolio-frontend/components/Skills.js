@@ -16,6 +16,10 @@ const skills = [
     percent: "100%",
   },
   {
+    img: "/Skills/tslogo.png",
+    percent: "100%",
+  },
+  {
     img: "/Skills/python.png",
     percent: "100%",
   },

@@ -17,8 +17,8 @@ const projects = [
     logo: "/Projects/grpStudy.jpg",
     details:
       "This a web app where students can come and either join a current group study session or can create their own study session. This web app is a MERN stack app. I used useContext for fetching apis and managing states. It has sorting functionality as well through which student can sort the ongoing or upcoming sessions based on date or time. The APIs are created in Node.js/Express.js and uses MongoDB as the DBMS. JWT is used for authentication. I got exposure to creating APIs and using MongoDB atlas.",
-    githubRepo: "https://github.com/Aditya61101/Group_Study_Frontend",
-    link: "https://groupstudyapp.netlify.app/",
+    githubRepo: "https://github.com/Aditya61101/Group-Study",
+    link: "https://group-study.vercel.app/",
   },
   {
     type: "NJACK IIT Patna",
