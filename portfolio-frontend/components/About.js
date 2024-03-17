@@ -19,7 +19,7 @@ export const About = () => {
               <span className=" text-teal-500 hover:bg-gradient-to-r from-cyan-500 to-teal-500 hover:text-white transition-colors duration-700 ease-out">
                 <a href="https://www.iitp.ac.in/" target="_blank">
                   {" "}
-                  Indian Institute Of Technology(IIT), Patna.
+                  Indian Institute Of Technology (IIT), Patna.
                 </a>
               </span>{" "}
               I am currently in my Junior Year (3rd Year), pursuing Btech. in{" "}

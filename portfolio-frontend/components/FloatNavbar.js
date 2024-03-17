@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { AiOutlineUser, AiOutlineMessage } from "react-icons/ai";
 import { MdSchool, MdWork } from "react-icons/md";
 import { BiBookReader } from "react-icons/bi";
-import {FaFolderOpen} from "react-icons/fa";
-
+import { FaFolderOpen } from "react-icons/fa";
 
 const BottomNavbar = () => {
   const [activeNav, setActiveNav] = useState("#");
