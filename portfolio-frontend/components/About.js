@@ -15,8 +15,30 @@ export const About = () => {
           />
           <div>
             <p className="text-md py-2 leading-8 text-gray-600">
-              The name is Aditya. I am an undergraduate student at{" "}
+              I'm Aditya Kumar, currently a senior pursuing my B.Tech in the
+              Electrical and Electronics department at{" "}
               <span className=" text-teal-500 hover:bg-gradient-to-r from-cyan-500 to-teal-500 hover:text-white transition-colors duration-700 ease-out">
+                <a href="https://www.iitp.ac.in/" target="_blank">
+                  {" "}
+                  Indian Institute Of Technology (IIT), Patna.
+                </a>
+              </span>{" "}
+              As a software developer intern at Regalo, I crafted a trip
+              itinerary web app over a three-month period, demonstrating my
+              proficiency in turning ideas into functional applications. I was
+              the coordinator of Not Just Another Coding Klub (NJACK) DEV and
+              Open-Source department. In this role, I organized hackathons and
+              knowledge-sharing sessions, fostering a collaborative environment
+              for tech enthusiasts. Regarding my achievements, I secured a
+              bronze medal at Inter IIT tech meet held in February'23 for a high prep
+              statement name "Grow Simplee". Beyond academics and coding, I find
+              joy in sports like Cricket, Kabbadi, and occasionally football.
+              Music is a significant part of my life, and I not only enjoy
+              listening but sometimes play the guitar. Looking ahead, my goal is
+              to dive deeper into software development, as Software development
+              skills are versatile and can be applied in various industries. The
+              name is Aditya. I am an undergraduate student at{" "}
+              {/* <span className=" text-teal-500 hover:bg-gradient-to-r from-cyan-500 to-teal-500 hover:text-white transition-colors duration-700 ease-out">
                 <a href="https://www.iitp.ac.in/" target="_blank">
                   {" "}
                   Indian Institute Of Technology (IIT), Patna.
@@ -26,7 +48,7 @@ export const About = () => {
               <span className=" text-teal-500">
                 Electrical and Electronics Engineering
               </span>
-              . I am a quick learner, an adaptable and a hard-working person.
+              . I am a quick learner, an adaptable and a hard-working person. */}
             </p>
 
             <p className="text-md py-2 leading-8 text-gray-600">
