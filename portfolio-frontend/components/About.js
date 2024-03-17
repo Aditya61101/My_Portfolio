@@ -22,7 +22,7 @@ export const About = () => {
                   Indian Institute Of Technology (IIT), Patna.
                 </a>
               </span>{" "}
-              I am currently in my Junior Year (3rd Year), pursuing Btech. in{" "}
+              I am currently in my Senior Year (4th Year), pursuing Btech. in{" "}
               <span className=" text-teal-500">
                 Electrical and Electronics Engineering
               </span>
@@ -38,8 +38,7 @@ export const About = () => {
                   Not Just Another Coding Klub (NJACK)
                 </a>
               </span>{" "}
-              DEV and Open-Source department. I am currently learning Django as
-              a backend framework!
+              DEV and Open-Source department.
             </p>
           </div>
         </div>
