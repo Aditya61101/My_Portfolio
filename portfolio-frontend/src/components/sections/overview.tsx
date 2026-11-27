@@ -2,6 +2,7 @@ import { highlights } from "../../data/highlights";
 import { profile } from "../../data/profile";
 import { Icon } from "../ui/icon";
 import { Button, Container, GlassCard, IconButton } from "../ui/primitives";
+import { ViewEntrance } from "../ui/view-entrance";
 import { ComputationalCore } from "../visuals/computational-core";
 
 export function Hero() {
@@ -33,7 +34,7 @@ export function Highlights() {
   return (
     <section className="highlights" aria-label="Professional highlights">
       <Container>
-        <GlassCard className="highlight-panel">
+        <ViewEntrance><GlassCard className="highlight-panel">
           <ul className="highlight-list">
             {highlights.map(({ title, description, icon }) => (
               <li key={title} className="highlight">
@@ -42,7 +43,7 @@ export function Highlights() {
               </li>
             ))}
           </ul>
-        </GlassCard>
+        </GlassCard></ViewEntrance>
       </Container>
     </section>
   );

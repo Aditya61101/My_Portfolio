@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import type { ReactNode } from "react";
 import { profile, siteUrl } from "../data/profile";
 import "./globals.css";
+import "./interaction.css";
 
 const heading = localFont({
   src: "../fonts/space-grotesk.woff2",

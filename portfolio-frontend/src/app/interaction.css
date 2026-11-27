@@ -1,0 +1,137 @@
+.site-nav {
+  position: relative;
+  animation: portfolio-appear 510ms var(--transition-ease) both;
+}
+
+.site-nav__links a {
+  position: relative;
+}
+
+.site-nav__links a[aria-current],
+.site-nav__contact[aria-current] {
+  color: var(--foreground);
+}
+
+.site-nav__links a::after {
+  position: absolute;
+  inset: auto 0 0.12rem;
+  height: 2px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+  transform: scaleX(0);
+  opacity: 0;
+  transition: transform 270ms var(--transition-ease), opacity 200ms ease;
+  content: "";
+}
+
+.site-nav__links a[aria-current]::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+.site-nav__contact[aria-current] {
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
+.site-nav__progress {
+  position: absolute;
+  inset: auto 0.85rem 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+  transform-origin: left;
+  pointer-events: none;
+}
+
+.hero__copy > *,
+.hero__name {
+  animation: portfolio-appear 650ms var(--transition-ease) both;
+}
+
+.hero__copy > :nth-child(2) { animation-delay: 55ms; }
+.hero__name { animation-delay: 85ms; }
+.hero__copy > :nth-child(3) { animation-delay: 105ms; }
+.hero__copy > :nth-child(4) { animation-delay: 155ms; }
+.hero__copy > :nth-child(5) { animation-delay: 205ms; }
+
+.core-visual__fallback,
+.core-visual__canvas {
+  position: absolute;
+  inset: 0;
+  transition: opacity 450ms var(--transition-ease);
+}
+
+.core-visual__canvas {
+  opacity: 0;
+}
+
+.core-visual[data-scene="running"] .core-visual__canvas,
+.core-visual[data-scene="paused"] .core-visual__canvas {
+  opacity: 1;
+}
+
+.core-visual[data-scene="running"] .core-visual__fallback,
+.core-visual[data-scene="paused"] .core-visual__fallback {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.core-visual__labels {
+  pointer-events: none;
+}
+
+.core-label-position {
+  position: absolute;
+  pointer-events: auto;
+  animation: portfolio-appear 600ms var(--transition-ease) both;
+}
+
+.core-label-position:nth-child(2) { animation-delay: 80ms; }
+.core-label-position:nth-child(3) { animation-delay: 135ms; }
+.core-label-position:nth-child(4) { animation-delay: 190ms; }
+
+.core-label-position .core-label {
+  position: relative;
+  min-height: 2rem;
+  text-align: left;
+  transition: border-color var(--duration-fast) var(--transition-ease),
+    box-shadow var(--duration-fast) var(--transition-ease), background-color var(--duration-fast) var(--transition-ease);
+}
+
+button.core-label { cursor: pointer; }
+
+.core-label-position[data-active] .core-label {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, var(--background-secondary));
+  box-shadow: 0 0 22px var(--accent-glow);
+}
+
+.core-visual[data-module="agent"] [data-node="agent"],
+.core-visual[data-module="backend"] [data-node="backend"],
+.core-visual[data-module="system"] [data-node="system"],
+.core-visual[data-module="product"] [data-node="product"] {
+  filter: brightness(1.55);
+}
+
+[data-entered] .highlight {
+  animation: portfolio-appear 540ms var(--transition-ease) both;
+}
+
+[data-entered] .highlight:nth-child(2) { animation-delay: 45ms; }
+[data-entered] .highlight:nth-child(3) { animation-delay: 90ms; }
+[data-entered] .highlight:nth-child(4) { animation-delay: 135ms; }
+
+@keyframes portfolio-appear {
+  from { opacity: 0.78; transform: translateY(0.4rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-nav, .hero__copy > *, .hero__name, .core-label-position, [data-entered] .highlight {
+    animation: none;
+  }
+
+  .site-nav__links a::after, .core-visual__fallback, .core-visual__canvas {
+    transition: none;
+  }
+}

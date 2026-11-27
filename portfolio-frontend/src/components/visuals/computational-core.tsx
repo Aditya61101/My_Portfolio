@@ -1,20 +1,14 @@
-import { Icon, type IconName } from "../ui/icon";
-
-const modules = [
-  { name: "Agentic AI", icon: "spark", position: "agent" },
-  { name: "Backend systems", icon: "server", position: "backend" },
-  { name: "System design", icon: "layers", position: "system" },
-  { name: "Product development", icon: "cube", position: "product" },
-] as const satisfies readonly { name: string; icon: IconName; position: string }[];
+import { CoreExperience } from "./core-experience";
+import type { ModuleId } from "./core-types";
 
 const floorLines = Array.from({ length: 13 }, (_, index) => index * 43 - 258);
 
-function CoreNode({ x, y, width = 23 }: { x: number; y: number; width?: number }) {
+function CoreNode({ x, y, width = 23, module }: { x: number; y: number; width?: number; module: ModuleId }) {
   const rise = width * 0.55;
   const height = width * 1.42;
 
   return (
-    <g transform={`translate(${x} ${y})`} strokeLinejoin="round">
+    <g data-node={module} transform={`translate(${x} ${y})`} strokeLinejoin="round">
       <path d={`M0 ${-rise} ${width} 0 0 ${rise} ${-width} 0Z`} fill="url(#node-top)" stroke="#57f9d5" strokeOpacity=".75" />
       <path d={`M${-width} 0 0 ${rise}V${rise + height}L${-width} ${height}Z`} fill="url(#node-left)" stroke="#30d8b0" strokeOpacity=".62" />
       <path d={`M0 ${rise} ${width} 0V${height}L0 ${rise + height}Z`} fill="url(#node-right)" stroke="#30d8b0" strokeOpacity=".6" />
@@ -26,7 +20,7 @@ function CoreNode({ x, y, width = 23 }: { x: number; y: number; width?: number }
 
 export function ComputationalCore() {
   return (
-    <div className="core-visual">
+    <CoreExperience fallback={
       <svg className="core-visual__art" viewBox="0 0 640 452" aria-hidden="true" focusable="false">
         <defs>
           <radialGradient id="core-aura">
@@ -100,8 +94,8 @@ export function ComputationalCore() {
         </g>
         <path d="m382 35 9 4-9 5-9-5Z" fill="#37e4bd" stroke="#83ffe1" strokeOpacity=".5" />
 
-        <CoreNode x={176} y={154} />
-        <CoreNode x={466} y={141} width={24} />
+        <CoreNode x={176} y={154} module="agent" />
+        <CoreNode x={466} y={141} width={24} module="backend" />
         <g strokeLinejoin="round">
           <path d="M320 203 422 255 320 313 218 255Z" fill="url(#base-top)" stroke="#3feac5" strokeOpacity=".72" />
           <path d="M218 255 320 313v43l-102-57Z" fill="url(#base-left)" stroke="#35b99f" strokeOpacity=".46" />
@@ -127,18 +121,10 @@ export function ComputationalCore() {
           <path d="m304 169 10 14-10 6" opacity=".72" />
         </g>
 
-        <CoreNode x={157} y={300} width={27} />
-        <CoreNode x={478} y={288} width={28} />
+        <CoreNode x={157} y={300} width={27} module="system" />
+        <CoreNode x={478} y={288} width={28} module="product" />
         <path d="M274 353h92" stroke="#31ffd0" opacity=".32" strokeWidth="4" filter="url(#core-light)" />
       </svg>
-      <ul className="core-visual__labels" aria-label="Areas of focus">
-        {modules.map(({ name, icon, position }) => (
-          <li key={position} className={`core-label core-label--${position}`}>
-            <Icon name={icon} />
-            <span>{name}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
+    } />
   );
 }
