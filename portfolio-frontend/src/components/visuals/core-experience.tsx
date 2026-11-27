@@ -46,11 +46,15 @@ export function CoreExperience({ fallback }: { fallback: ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   const approach = useInView(ref, { margin: "128px", once: true });
   const visible = useInView(ref, { amount: 0.1 });
-  const eligible = useSyncExternalStore(subscribeMedia, () => window.matchMedia(desktopMotion).matches, serverFalse);
+  const [ready, setReady] = useState(false);
+  const subscribeEligibility = useCallback((notify: () => void) => subscribeMedia(() => {
+    setReady(false);
+    notify();
+  }), []);
+  const eligible = useSyncExternalStore(subscribeEligibility, () => window.matchMedia(desktopMotion).matches, serverFalse);
   const pageVisible = useSyncExternalStore(subscribeVisibility, () => !document.hidden, serverFalse);
   const hydrated = useSyncExternalStore(() => () => {}, () => true, serverFalse);
   const [supported, setSupported] = useState(false);
-  const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
   const [hovered, setHovered] = useState<ModuleId | null>(null);
   const [focused, setFocused] = useState<ModuleId | null>(null);
@@ -61,7 +65,10 @@ export function CoreExperience({ fallback }: { fallback: ReactNode }) {
     const probe = () => {
       try {
         const gl = document.createElement("canvas").getContext("webgl2", { antialias: false });
-        if (!gl) return;
+        if (!gl) {
+          setFailed(true);
+          return;
+        }
         gl.getExtension("WEBGL_lose_context")?.loseContext();
         setSupported(true);
       } catch {
