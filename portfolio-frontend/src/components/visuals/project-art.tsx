@@ -1,3 +1,5 @@
+import type { Project } from "../../data/projects";
+
 const graphNodes = [
   [28, 113], [43, 62], [66, 141], [87, 98], [103, 47], [123, 119],
   [147, 77], [162, 137], [177, 39], [191, 100], [227, 64], [240, 125],
@@ -27,12 +29,15 @@ function GraphArt() {
           <line key={`${from}-${to}`} x1={graphNodes[from][0]} y1={graphNodes[from][1]} x2={graphNodes[to][0]} y2={graphNodes[to][1]} />
         ))}
       </g>
+      <path className="project-flow" d="M43 62 87 98 147 77 191 100 227 64" stroke="#a6ffe8" strokeWidth="1.8" fill="none" />
       {graphNodes.map(([x, y], index) => (
         <g key={x}>
-          <circle cx={x} cy={y} r={index % 3 === 0 ? 9 : 5} fill="#35ebc1" opacity=".13" />
+          <circle className={index % 3 === 0 ? "project-pulse" : undefined} cx={x} cy={y} r={index % 3 === 0 ? 9 : 5} fill="#35ebc1" opacity=".24" />
           <circle cx={x} cy={y} r={index % 3 === 0 ? 2.6 : 1.7} fill="#91ffe0" />
         </g>
       ))}
+      <rect x="168" y="30" width="18" height="18" rx="3" fill="none" stroke="#71f5ca" strokeOpacity=".62" />
+      <path d="m173 39 3 3 5-6" fill="none" stroke="#b6ffe9" strokeLinecap="round" />
     </>
   );
 }
@@ -58,17 +63,72 @@ function DocumentsArt() {
         </g>
       ))}
       <path d="m209 107 5 2 1 5 3-3 5 2-2-5 3-3-5-1-2-5-3 4-5-1Z" fill="#c7a8ff" opacity=".6" />
+      <path d="M53 149h181" stroke="#ac8cfa" strokeOpacity=".35" />
+      <path className="project-flow" d="M53 149h181" stroke="#dbbeff" strokeWidth="1.7" />
+      {[56, 117, 175, 233].map((x) => <circle className="project-pulse" key={x} cx={x} cy="149" r="4.6" fill="#bca0ff" />)}
     </>
   );
 }
 
-export function ProjectArt({ kind }: { kind: "graph" | "documents" }) {
+function TerminalArt() {
   return (
-    <figure className="project-art">
-      <svg viewBox="0 0 260 175" aria-hidden="true" focusable="false">
-        {kind === "graph" ? <GraphArt /> : <DocumentsArt />}
+    <>
+      <rect x="16" y="8" width="229" height="101" rx="9" fill="#0a151a" stroke="#368374" />
+      <path d="M16 28h229" stroke="#28564d" />
+      <g fill="#66d7b8"><circle cx="30" cy="18" r="2.2" /><circle cx="40" cy="18" r="2.2" /><circle cx="50" cy="18" r="2.2" /></g>
+      <text x="29" y="49" fill="#93f8d7" fontSize="13" fontFamily="monospace">issue → context</text>
+      <text x="29" y="72" fill="#72cbb5" fontSize="13" fontFamily="monospace">review checkpoint</text>
+      <text x="29" y="94" fill="#abf5e2" fontSize="13" fontFamily="monospace">pull request</text>
+      <path className="project-flow" d="M162 45h57v45h-53" fill="none" stroke="#34fac4" strokeWidth="2" />
+      <rect className="project-pulse" x="126" y="84" width="8" height="11" rx="1" fill="#7fffd9" />
+    </>
+  );
+}
+
+function DeliveryArt() {
+  return (
+    <>
+      <path d="M27 45h200M171 45v43h49" fill="none" stroke="#398878" strokeWidth="2" />
+      <path className="project-flow" d="M27 45h200M171 45v43h49" fill="none" stroke="#79f5d2" strokeWidth="3" />
+      {[35, 100, 170, 231].map((x) => (
+        <g key={x}>
+          <rect x={x - 13} y="32" width="26" height="26" rx="5" fill="#122d2b" stroke="#67ccba" />
+          <circle className="project-pulse" cx={x} cy="45" r="3.8" fill="#86fae0" />
+        </g>
+      ))}
+      <path d="m227 81 8 7-8 8-7-8Z" fill="#70dcff" />
+      <text x="75" y="101" fill="#96cdbf" fontSize="12" fontFamily="monospace">queue · retry</text>
+    </>
+  );
+}
+
+function ReportArt() {
+  return (
+    <>
+      <path d="M25 11h101l17 19v80H25Z" fill="#192e32" stroke="#528c82" />
+      <path d="M126 11v21h17M43 44h68m-68 15h52m-52 15h67m-67 15h48" fill="none" stroke="#70c8b5" />
+      <path d="M145 42h99v39h-44l-11 11v-11h-44ZM176 94h68v16h-68Z" fill="#173d38" stroke="#4fc5ae" />
+      <path className="project-flow" d="M154 56h69m-69 10h70m-40 36h52" stroke="#a0ffe2" strokeWidth="2" />
+    </>
+  );
+}
+
+const artwork = {
+  decisionguard: GraphArt,
+  "claim-iq": DocumentsArt,
+  "dev-assistant": TerminalArt,
+  notifications: DeliveryArt,
+  askin: ReportArt,
+} satisfies Record<Project["id"], () => React.JSX.Element>;
+
+export function ProjectArt({ id, featured }: { id: Project["id"]; featured?: boolean }) {
+  const Artwork = artwork[id];
+  return (
+    <figure className={`project-art ${featured ? "" : "project-art--compact"}`}>
+      <svg viewBox={featured ? "0 0 260 175" : "0 0 260 120"} aria-hidden="true" focusable="false">
+        <Artwork />
       </svg>
-      <figcaption>Concept illustration</figcaption>
+      <figcaption>{featured ? "Concept illustration" : "Concept"}</figcaption>
     </figure>
   );
 }
