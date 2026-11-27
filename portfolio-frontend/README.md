@@ -1,34 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolio frontend
 
-## Getting Started
+The homepage at `/` is statically prerendered by the Next.js App Router. Its root layout and page live in `src/app/`, and its profile and section navigation are defined in `src/data/`.
 
-First, run the development server:
+## Local development
 
-```bash
+Use current patches of Node.js 24 LTS and npm 11. Run these commands from the repository root.
+
+```sh
+cd portfolio-frontend
+npm ci
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [localhost:3000](http://localhost:3000). The development server needs no environment variables.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Development and production scripts use Next.js's Webpack mode because Turbopack could not start its PostCSS worker on the Windows verification host.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Verification
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```sh
+npm ls
+npm run lint
+npm run typecheck
+npm run build
+npm start
+```
 
-## Learn More
+`npm run typecheck` generates Next.js route types before running the TypeScript compiler. After `npm start`, the production server serves the prerendered homepage at [localhost:3000](http://localhost:3000).
 
-To learn more about Next.js, take a look at the following resources:
+## Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The existing portfolio uses Vercel. The app builds from `portfolio-frontend/` using the Next.js preset and `npm run build`. Deployment settings are managed in the existing Vercel project.
