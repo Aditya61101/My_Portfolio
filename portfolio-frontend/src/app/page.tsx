@@ -1,5 +1,6 @@
 import { SiteNavigation } from "../components/layout/site-navigation";
-import { AboutSection, ContactSection, EducationSection, SiteFooter, SkillsSection } from "../components/sections/bio";
+import { AboutSection, ContactSection, EducationSection, SiteFooter } from "../components/sections/bio";
+import { SkillsSection } from "../components/sections/skills-section";
 import { Hero, Highlights } from "../components/sections/overview";
 import { ExperienceSection, ProjectsSection } from "../components/sections/work";
 

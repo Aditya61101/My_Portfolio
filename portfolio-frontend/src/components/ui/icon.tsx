@@ -18,6 +18,10 @@ const lineIcons = {
   database: <><ellipse cx="12" cy="5" rx="8" ry="3" /><path d="M4 5v14c0 4 16 4 16 0V5M4 12c0 4 16 4 16 0" /></>,
   layout: <><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 9h18m-12 0v11" /></>,
   cloud: <path d="M6 18h12a4 4 0 0 0 .3-8A6 6 0 0 0 7 9a4.5 4.5 0 0 0-1 9Z" />,
+  network: <><circle cx="12" cy="5" r="2.5" /><circle cx="5" cy="18" r="2.5" /><circle cx="19" cy="18" r="2.5" /><path d="m11 7-5 9m7-9 5 9M8 18h8" /></>,
+  copy: <><rect x="8" y="8" width="12" height="12" rx="2" /><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" /></>,
+  chevron: <path d="m6 9 6 6 6-6" />,
+  coffee: <path d="M4 9h13v5a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9Zm13 1h2a2 2 0 1 1 0 4h-2M3 21h17M9 6c-2-1 1-2 0-4m4 4c-2-1 1-2 0-4" />,
   brackets: <path d="M9 4H7a2 2 0 0 0-2 2v4l-2 2 2 2v4a2 2 0 0 0 2 2h2m6-16h2a2 2 0 0 1 2 2v4l2 2-2 2v4a2 2 0 0 1-2 2h-2" />,
 } satisfies Record<string, ReactNode>;
 

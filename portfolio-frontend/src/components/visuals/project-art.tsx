@@ -102,23 +102,11 @@ function DeliveryArt() {
   );
 }
 
-function ReportArt() {
-  return (
-    <>
-      <path d="M25 11h101l17 19v80H25Z" fill="#192e32" stroke="#528c82" />
-      <path d="M126 11v21h17M43 44h68m-68 15h52m-52 15h67m-67 15h48" fill="none" stroke="#70c8b5" />
-      <path d="M145 42h99v39h-44l-11 11v-11h-44ZM176 94h68v16h-68Z" fill="#173d38" stroke="#4fc5ae" />
-      <path className="project-flow" d="M154 56h69m-69 10h70m-40 36h52" stroke="#a0ffe2" strokeWidth="2" />
-    </>
-  );
-}
-
 const artwork = {
   decisionguard: GraphArt,
   "claim-iq": DocumentsArt,
   "dev-assistant": TerminalArt,
   notifications: DeliveryArt,
-  askin: ReportArt,
 } satisfies Record<Project["id"], () => React.JSX.Element>;
 
 export function ProjectArt({ id, featured }: { id: Project["id"]; featured?: boolean }) {

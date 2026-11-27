@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState, type MouseEvent, type PointerEvent, type ReactNode } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent, type MouseEvent, type PointerEvent, type ReactNode } from "react";
 import type { Project } from "../../data/projects";
 import { Icon } from "../ui/icon";
 import { Button, TechTag } from "../ui/primitives";
@@ -140,6 +140,17 @@ export function ProjectGallery({ children, projects }: { children: ReactNode; pr
       event.clientY < bounds.top || event.clientY > bounds.bottom) dismiss();
   }
 
+  function keepDialogFocus(event: KeyboardEvent<HTMLDialogElement>) {
+    if (event.key !== "Tab") return;
+    const controls = event.currentTarget.querySelectorAll<HTMLElement>("button:not([disabled]), a[href]");
+    const first = controls[0];
+    const last = controls[controls.length - 1];
+    const edge = event.shiftKey ? first : last;
+    if (edge !== document.activeElement) return;
+    event.preventDefault();
+    (event.shiftKey ? last : first)?.focus();
+  }
+
   return (
     <div ref={gallery} className="project-gallery" onClick={openFromCard} onPointerMove={positionSpotlight}>
       {children}
@@ -150,6 +161,7 @@ export function ProjectGallery({ children, projects }: { children: ReactNode; pr
         aria-describedby="project-dialog-overview"
         onCancel={(event) => { event.preventDefault(); dismiss(); }}
         onClick={dismissBackdrop}
+        onKeyDown={keepDialogFocus}
       >
         {selected ? (
           <>

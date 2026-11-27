@@ -6,6 +6,7 @@ import { profile } from "../../data/profile";
 import { sections } from "../../data/sections";
 import { Icon } from "../ui/icon";
 import { Button, Container } from "../ui/primitives";
+import { ResumeMenu } from "../ui/resume-menu";
 
 const navigation = [{ id: "home", title: "Home" }, ...sections].filter(
   ({ id }) => id !== "contact",
@@ -73,9 +74,12 @@ export function SiteNavigation() {
               </li>
             ))}
           </ul>
-          <Button href="#contact" className="site-nav__contact" aria-current={active === "contact" ? "location" : undefined}>
-            Contact <Icon name="external" />
-          </Button>
+          <div className="site-nav__actions">
+            <Button href="#contact" className="site-nav__contact" aria-current={active === "contact" ? "location" : undefined}>
+              Contact <Icon name="external" />
+            </Button>
+            <ResumeMenu />
+          </div>
           <motion.div className="site-nav__progress" aria-hidden="true" style={{ scaleX: scrollYProgress }} />
         </nav>
       </Container>

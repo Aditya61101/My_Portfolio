@@ -10,7 +10,7 @@ export const profile = {
   introduction:
     "I build reliable backend systems and intelligent workflows for complex engineering problems.",
   about:
-    "I’m an IIT Patna graduate working across backend engineering and applied AI. My work includes building APIs that stream responses, processing documents, and orchestrating multi-agent workflows.",
+    "I like working out where a system can fail before deciding how to build it. With backend services and applied AI, I look for clear boundaries, traceable decisions, and ways to make failures easier to diagnose. I’m most interested in turning that engineering into products people can use.",
   links: {
     email: "mailto:adityakumarsanni.2001@gmail.com",
     github: "https://github.com/Aditya61101",

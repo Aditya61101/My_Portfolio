@@ -45,7 +45,7 @@
 
 .hero__copy > *,
 .hero__name {
-  animation: portfolio-appear 650ms var(--transition-ease) both;
+  animation: hero-rise 540ms var(--transition-ease) both;
 }
 
 .hero__copy > :nth-child(2) { animation-delay: 55ms; }
@@ -119,11 +119,15 @@ button.core-label { cursor: pointer; }
 
 [data-entered] .highlight:nth-child(2) { animation-delay: 45ms; }
 [data-entered] .highlight:nth-child(3) { animation-delay: 90ms; }
-[data-entered] .highlight:nth-child(4) { animation-delay: 135ms; }
 
 @keyframes portfolio-appear {
   from { opacity: 0.78; transform: translateY(0.4rem); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hero-rise {
+  from { transform: translateY(0.35rem); }
+  to { transform: translateY(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {

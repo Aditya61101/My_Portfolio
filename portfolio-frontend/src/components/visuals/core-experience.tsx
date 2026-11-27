@@ -57,8 +57,8 @@ export function CoreExperience({ fallback }: { fallback: ReactNode }) {
   const [pinned, setPinned] = useState<ModuleId | null>(null);
 
   useEffect(() => {
-    if (!eligible || !approach) return;
-    const frame = requestAnimationFrame(() => {
+    if (!eligible || !approach || !pageVisible || supported || failed) return;
+    const probe = () => {
       try {
         const gl = document.createElement("canvas").getContext("webgl2", { antialias: false });
         if (!gl) return;
@@ -67,9 +67,14 @@ export function CoreExperience({ fallback }: { fallback: ReactNode }) {
       } catch {
         setFailed(true);
       }
-    });
+    };
+    if (typeof window.requestIdleCallback === "function") {
+      const idle = window.requestIdleCallback(probe, { timeout: 700 });
+      return () => window.cancelIdleCallback(idle);
+    }
+    const frame = requestAnimationFrame(probe);
     return () => cancelAnimationFrame(frame);
-  }, [eligible, approach]);
+  }, [eligible, approach, pageVisible, supported, failed]);
 
   const onReady = useCallback(() => setReady(true), []);
   const onFailure = useCallback(() => setFailed(true), []);

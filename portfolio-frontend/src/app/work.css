@@ -79,6 +79,13 @@
 
 .project-gallery { min-width: 0; }
 
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: var(--grid-gap);
+}
+
 .project-card {
   transition: border-color 220ms var(--transition-ease),
     box-shadow 220ms var(--transition-ease), transform 260ms var(--transition-ease);
@@ -123,6 +130,14 @@
   min-height: clamp(15.75rem, 20vw, 17.5rem);
 }
 
+.project-card--compact {
+  min-height: 12.5rem;
+}
+
+.project-card--compact :is(h3, p) {
+  max-width: 56%;
+}
+
 .project-card--featured .project-art figcaption {
   top: var(--panel-padding);
   bottom: auto;
@@ -133,7 +148,6 @@
   flex-wrap: wrap;
   align-items: flex-start;
   gap: 0.35rem;
-  margin-top: auto;
 }
 
 .project-card__actions {
@@ -142,6 +156,11 @@
   align-items: center;
   gap: 0.5rem 0.8rem;
   margin-top: 0.75rem;
+}
+
+.project-card__content > .project-card__actions {
+  margin-top: auto;
+  padding-top: 0.75rem;
 }
 
 .project-card__actions .button {
@@ -153,20 +172,23 @@
 }
 
 .project-art--compact {
-  top: 0.35rem;
-  right: 0.6rem;
-  bottom: auto;
-  width: min(47%, 9.4rem);
-  height: 4rem;
+  inset: var(--panel-padding) var(--panel-padding) 4.5rem auto;
+  display: flex;
+  width: min(37%, 12rem);
+  height: auto;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .project-art--compact figcaption {
-  right: 0;
-  bottom: 0;
+  position: static;
   font-size: 0.62rem;
 }
 
 .project-art--compact svg {
+  height: auto;
+  max-height: 5.5rem;
   mask-image: none;
 }
 
@@ -252,16 +274,18 @@ html:has(.project-dialog[open]) { overflow: hidden; }
   letter-spacing: -0.055em;
 }
 
-.project-dialog__close { flex: none; font-size: 1.5rem; cursor: pointer; }
+.project-dialog__close { min-width: 2.75rem; min-height: 2.75rem; flex: none; font-size: 1.5rem; cursor: pointer; }
 
 .project-dialog__body {
   display: grid;
   gap: 1.1rem;
   padding: clamp(0.9rem, 2.8vw, 1.65rem);
   color: var(--foreground-secondary);
+  line-height: 1.65;
 }
 
-.project-dialog__body > p { color: var(--foreground); }
+.project-dialog__body > p { max-width: 62ch; color: var(--foreground); }
+.project-detail-block > p { max-width: 62ch; }
 .project-detail-block h3 { margin-bottom: 0.42rem; color: var(--foreground); font-size: 1.15rem; font-weight: 650; }
 .project-detail-block .accent-list { margin-top: 0; }
 .project-detail-media { display: grid; gap: 0.65rem; }
@@ -324,6 +348,7 @@ html:has(.project-dialog[open]) { overflow: hidden; }
 }
 
 @media (max-width: 43rem) {
+  .project-grid { grid-template-columns: minmax(0, 1fr); }
   .project-card--featured { min-height: 14rem; }
   .project-dialog { inset: auto 0 0; width: 100%; max-height: 94dvh; margin: 0; border-radius: var(--radius-card) var(--radius-card) 0 0; }
   .project-detail-flow ol { display: grid; gap: 0.68rem; }
